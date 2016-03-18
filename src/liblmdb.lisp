@@ -22,9 +22,9 @@
            16)
    #.(swig-lispify "MDB_VERSION_PATCH" 'constant)))
 
-(cl:defconstant #.(swig-lispify "MDB_VERSION_DATE" 'constant) "September 20, 2014")
+(cl:defparameter #.(swig-lispify "MDB_VERSION_DATE" 'constant) "September 20, 2014")
 
-(cl:defconstant #.(swig-lispify "MDB_VERSION_STRING" 'constant) "LMDB 0.9.14: (September 20, 2014)")
+(cl:defparameter #.(swig-lispify "MDB_VERSION_STRING" 'constant) "LMDB 0.9.14: (September 20, 2014)")
 
 (cffi:defcstruct #.(swig-lispify "MDB_val" 'classname)
 	(#.(swig-lispify "mv_size" 'slotname) :pointer)
