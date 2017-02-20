@@ -231,7 +231,7 @@
 
 (cffi:defcfun ("mdb_env_set_mapsize" #.(swig-lispify "mdb_env_set_mapsize" 'function)) :int
   (env :pointer)
-  (size :pointer))
+  (size :unsigned-int))
 
 (cffi:defcfun ("mdb_env_set_maxreaders" #.(swig-lispify "mdb_env_set_maxreaders" 'function)) :int
   (env :pointer)
