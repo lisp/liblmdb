@@ -1,5 +1,6 @@
 (in-package :cl-user)
 (defpackage liblmdb
+  (:use)
   (:export :+append+
            :+appenddup+
            :+bad-dbi+
