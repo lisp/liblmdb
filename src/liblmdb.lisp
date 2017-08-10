@@ -6,7 +6,10 @@
 
 (in-package :liblmdb)
 
-
+#+x86-64
+(cffi:defctype size-t  :uint64)
+#-x86-64
+(cffi:defctype size-t  :uint32)
 
 (cl:defconstant #.(swig-lispify "MDB_VERSION_MAJOR" 'constant) 0)
 
@@ -231,7 +234,7 @@
 
 (cffi:defcfun ("mdb_env_set_mapsize" #.(swig-lispify "mdb_env_set_mapsize" 'function)) :int
   (env :pointer)
-  (size :unsigned-int))
+  (size :size-t))
 
 (cffi:defcfun ("mdb_env_set_maxreaders" #.(swig-lispify "mdb_env_set_maxreaders" 'function)) :int
   (env :pointer)

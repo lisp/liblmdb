@@ -6,7 +6,7 @@
   :homepage "https://github.com/antimer/liblmdb"
   :bug-tracker "https://github.com/antimer/liblmdb/issues"
   :source-control (:git "git@github.com:antimer/liblmdb.git")
-  :depends-on (:cffi)
+  :depends-on (:cffi :trivial-features)
   :components ((:module "src"
                 :serial t
                 :components
