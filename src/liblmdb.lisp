@@ -158,7 +158,7 @@
 	(#.(swig-lispify "ms_entries" 'slotname) size-t))
 
 (cffi:defcstruct #.(swig-lispify "MDB_envinfo" 'classname)
-	(#.(swig-lispify "me_mapaddr" 'slotname) size-t)
+	(#.(swig-lispify "me_mapaddr" 'slotname) :pointer)
 	(#.(swig-lispify "me_mapsize" 'slotname) size-t)
 	(#.(swig-lispify "me_last_pgno" 'slotname) size-t)
 	(#.(swig-lispify "me_last_txnid" 'slotname) size-t)
