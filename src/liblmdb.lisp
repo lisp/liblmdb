@@ -313,59 +313,59 @@
 
 (cffi:defcfun ("mdb_stat" #.(swig-lispify "mdb_stat" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (stat :pointer))
 
 (cffi:defcfun ("mdb_dbi_flags" #.(swig-lispify "mdb_dbi_flags" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (flags :pointer))
 
 (cffi:defcfun ("mdb_dbi_close" #.(swig-lispify "mdb_dbi_close" 'function)) :void
   (env :pointer)
-  (dbi :pointer))
+  (dbi :uint))
 
 (cffi:defcfun ("mdb_drop" #.(swig-lispify "mdb_drop" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (del :int))
 
 (cffi:defcfun ("mdb_set_compare" #.(swig-lispify "mdb_set_compare" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (cmp :pointer))
 
 (cffi:defcfun ("mdb_set_dupsort" #.(swig-lispify "mdb_set_dupsort" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (cmp :pointer))
 
 (cffi:defcfun ("mdb_set_relfunc" #.(swig-lispify "mdb_set_relfunc" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (rel :pointer))
 
 (cffi:defcfun ("mdb_set_relctx" #.(swig-lispify "mdb_set_relctx" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (ctx :pointer))
 
 (cffi:defcfun ("mdb_get" #.(swig-lispify "mdb_get" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (key :pointer)
   (data :pointer))
 
 (cffi:defcfun ("mdb_put" #.(swig-lispify "mdb_put" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (key :pointer)
   (data :pointer)
   (flags :unsigned-int))
 
 (cffi:defcfun ("mdb_del" #.(swig-lispify "mdb_del" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (key :pointer)
   (data :pointer))
 
@@ -409,13 +409,13 @@
 
 (cffi:defcfun ("mdb_cmp" #.(swig-lispify "mdb_cmp" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (a :pointer)
   (b :pointer))
 
 (cffi:defcfun ("mdb_dcmp" #.(swig-lispify "mdb_dcmp" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (a :pointer)
   (b :pointer))
 
