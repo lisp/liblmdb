@@ -149,21 +149,43 @@
 
 (cl:defconstant #.(swig-lispify "MDB_LAST_ERRCODE" 'constant) -30780)
 
+(cffi:defcstruct #.(swig-lispify "MDB_val" 'classname)
+	(#.(swig-lispify "mv_size" 'slotname) :pointer)
+	(#.(swig-lispify "mv_data" 'slotname) :pointer))
+
 (cffi:defcstruct #.(swig-lispify "MDB_stat" 'classname)
 	(#.(swig-lispify "ms_psize" 'slotname) :unsigned-int)
 	(#.(swig-lispify "ms_depth" 'slotname) :unsigned-int)
-	(#.(swig-lispify "ms_branch_pages" 'slotname) :pointer)
-	(#.(swig-lispify "ms_leaf_pages" 'slotname) :pointer)
-	(#.(swig-lispify "ms_overflow_pages" 'slotname) :pointer)
-	(#.(swig-lispify "ms_entries" 'slotname) :pointer))
+	(#.(swig-lispify "ms_branch_pages" 'slotname) size-t)
+	(#.(swig-lispify "ms_leaf_pages" 'slotname) size-t)
+	(#.(swig-lispify "ms_overflow_pages" 'slotname) size-t)
+	(#.(swig-lispify "ms_entries" 'slotname) size-t))
 
 (cffi:defcstruct #.(swig-lispify "MDB_envinfo" 'classname)
 	(#.(swig-lispify "me_mapaddr" 'slotname) :pointer)
-	(#.(swig-lispify "me_mapsize" 'slotname) :pointer)
-	(#.(swig-lispify "me_last_pgno" 'slotname) :pointer)
-	(#.(swig-lispify "me_last_txnid" 'slotname) :pointer)
+	(#.(swig-lispify "me_mapsize" 'slotname) size-t)
+	(#.(swig-lispify "me_last_pgno" 'slotname) size-t)
+	(#.(swig-lispify "me_last_txnid" 'slotname) size-t)
 	(#.(swig-lispify "me_maxreaders" 'slotname) :unsigned-int)
 	(#.(swig-lispify "me_numreaders" 'slotname) :unsigned-int))
+
+(cffi:defcstruct #.(swig-lispify "MDB_txn" 'classname)
+  (#.(swig-lispify "mt_parent" 'slotname) :pointer)
+  (#.(swig-lispify "mt_child" 'slotname) :pointer)
+  (#.(swig-lispify "mt_next_pgno" 'slotname) size-t)
+  (#.(swig-lispify "mt_txnid" 'slotname) size-t)
+  (#.(swig-lispify "mt_env" 'slotname) :pointer)
+  (#.(swig-lispify "mt_free_pages" 'slotname) :pointer)
+  (#.(swig-lispify "mt_loose_pages" 'slotname) :pointer)
+  (#.(swig-lispify "mt_spill_pages" 'slotname) :pointer)
+  (#.(swig-lispify "mt_u" 'slotname) :pointer)
+  (#.(swig-lispify "mt_dbxs" 'slotname) :pointer)
+  (#.(swig-lispify "mt_dbs" 'slotname) :pointer)
+  (#.(swig-lispify "mt_dbiseqs" 'slotname) :pointer)
+  (#.(swig-lispify "mt_cursors" 'slotname) :pointer)
+  (#.(swig-lispify "mt_numdbs" 'slotname) :unsigned-int)
+  (#.(swig-lispify "mt_flags" 'slotname) :unsigned-int)
+  (#.(swig-lispify "mt_dirty_room" 'slotname) :unsigned-int))
 
 (cffi:defcfun ("mdb_version" #.(swig-lispify "mdb_version" 'function)) :string
   (major :pointer)
@@ -349,7 +371,7 @@
 
 (cffi:defcfun ("mdb_cursor_open" #.(swig-lispify "mdb_cursor_open" 'function)) :int
   (txn :pointer)
-  (dbi :pointer)
+  (dbi :uint)
   (cursor :pointer))
 
 (cffi:defcfun ("mdb_cursor_close" #.(swig-lispify "mdb_cursor_close" 'function)) :void

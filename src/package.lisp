@@ -143,6 +143,7 @@
            :ms-psize
            :mv-data
            :mv-size
+           :mt-txnid
            :name
            :onoff
            :op
